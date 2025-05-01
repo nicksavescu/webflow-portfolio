@@ -1,28 +1,27 @@
 //Rotating Words Headline
-  document.addEventListener("DOMContentLoaded", function () {
-    const elements = document.querySelectorAll('.rotate-words');
-
-    elements.forEach((el) => {
-      const words = el.dataset.rotateWords.split(',');
+$(document).ready(function () {
+    $('.rotate-words').each(function () {
+      const words = $(this).data('rotate-words').split(',');
       let index = 0;
+      const $el = $(this);
       let currentText = '';
       let isDeleting = false;
 
       function type() {
         const fullText = words[index];
-
+        
         if (isDeleting) {
           currentText = fullText.substring(0, currentText.length - 1);
         } else {
           currentText = fullText.substring(0, currentText.length + 1);
         }
 
-        el.textContent = currentText;
+        $el.text(currentText);
 
         let delay = isDeleting ? 50 : 100;
 
         if (!isDeleting && currentText === fullText) {
-          delay = 1500; // Pause when word is fully typed
+          delay = 1500; // Pause at full word
           isDeleting = true;
         } else if (isDeleting && currentText === '') {
           isDeleting = false;
