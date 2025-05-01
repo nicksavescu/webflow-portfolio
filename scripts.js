@@ -1,7 +1,7 @@
 //Navbar Show/Hide
 $(document).ready(function () {
     let lastScrollTop = 0;
-    const $navbar = $('.navbar'); // Replace '.navbar' with your actual navbar selector
+    const $navbar = $('.nav-frosty');
     const frostyClass = 'nav-frosty';
     const hiddenClass = 'nav-hidden';
 
