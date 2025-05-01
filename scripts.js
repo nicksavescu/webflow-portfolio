@@ -69,44 +69,39 @@ $(document).ready(function () {
 $(document).ready(function () {
   function initializeCardHover() {
     if ($(window).width() >= 1000) {
-      $('.Card-text-active').removeClass('show');
-      $('.Inner-wrapper-hc').addClass('show');
-      let activeCard = '#card1';
+      const $cards = $('.hover-card');
 
-      gsap.to(activeCard, { width: '40%', duration: 0.5, ease: 'power2.out' });
+      // Set initial active card
+      let activeIndex = 0;
 
       function resetCards() {
-        gsap.to(['#card1', '#card2', '#card3', '#card4'], {
-          width: '20%',
-          duration: 0.5,
-          ease: 'power2.out',
+        $cards.css('width', '20%');
+        $cards.each(function () {
+          $(this).find('.card-text-inactive').show();
+          $(this).find('.card-text-active').hide();
         });
-        $('.Inner-wrapper-hc').addClass('show');
-        $('.Card-text-active').removeClass('show');
       }
 
-      $('#card1, #card2, #card3, #card4').hover(
+      // Set initial state
+      resetCards();
+      $cards.eq(activeIndex).css('width', '40%');
+      $cards.eq(activeIndex).find('.card-text-inactive').hide();
+      $cards.eq(activeIndex).find('.card-text-active').show();
+
+      $cards.hover(
         function () {
-          const cardId = $(this).attr('id');
+          const index = $cards.index(this);
           resetCards();
-          gsap.to('#' + cardId, {
-            width: '40%',
-            duration: 0.5,
-            ease: 'power2.out',
-          });
-          $('#inner' + cardId.slice(-1)).removeClass('show');
-          $('#text' + cardId.slice(-1)).addClass('show');
-          activeCard = '#' + cardId;
+          $(this).css('width', '40%');
+          $(this).find('.card-text-inactive').hide();
+          $(this).find('.card-text-active').show();
+          activeIndex = index;
         },
         function () {
           resetCards();
-          gsap.to(activeCard, {
-            width: '40%',
-            duration: 0.5,
-            ease: 'power2.out',
-          });
-          $('#inner' + activeCard.slice(-1)).removeClass('show');
-          $('#text' + activeCard.slice(-1)).addClass('show');
+          $cards.eq(activeIndex).css('width', '40%');
+          $cards.eq(activeIndex).find('.card-text-inactive').hide();
+          $cards.eq(activeIndex).find('.card-text-active').show();
         }
       );
     }
