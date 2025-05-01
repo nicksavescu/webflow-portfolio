@@ -69,32 +69,44 @@ $(document).ready(function () {
 $(document).ready(function () {
   function initializeCardHover() {
     if ($(window).width() >= 1000) {
-      $('#text2, #text3, #text4').hide();
-      $('#inner1').hide();
-      $('#text1').show();
-      let activeCard = '#Card1';
+      $('.Card-text-active').removeClass('show');
+      $('.Inner-wrapper-hc').addClass('show');
+      let activeCard = '#card1';
+
       gsap.to(activeCard, { width: '40%', duration: 0.5, ease: 'power2.out' });
 
       function resetCards() {
-        gsap.to(['#Card1', '#Card2', '#Card3', '#Card4'], { width: '20%', duration: 0.5, ease: 'power2.out' });
-        $('#inner1, #inner2, #inner3, #inner4').show();
-        $('#text1, #text2, #text3, #text4').hide();
+        gsap.to(['#card1', '#card2', '#card3', '#card4'], {
+          width: '20%',
+          duration: 0.5,
+          ease: 'power2.out',
+        });
+        $('.Inner-wrapper-hc').addClass('show');
+        $('.Card-text-active').removeClass('show');
       }
 
-      $('#Card1, #Card2, #Card3, #Card4').hover(
+      $('#card1, #card2, #card3, #card4').hover(
         function () {
           const cardId = $(this).attr('id');
           resetCards();
-          gsap.to('#' + cardId, { width: '40%', duration: 0.5, ease: 'power2.out' });
-          $('#inner' + cardId.slice(-1)).hide();
-          $('#text' + cardId.slice(-1)).show();
+          gsap.to('#' + cardId, {
+            width: '40%',
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+          $('#inner' + cardId.slice(-1)).removeClass('show');
+          $('#text' + cardId.slice(-1)).addClass('show');
           activeCard = '#' + cardId;
         },
         function () {
           resetCards();
-          gsap.to(activeCard, { width: '40%', duration: 0.5, ease: 'power2.out' });
-          $('#inner' + activeCard.slice(-1)).hide();
-          $('#text' + activeCard.slice(-1)).show();
+          gsap.to(activeCard, {
+            width: '40%',
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+          $('#inner' + activeCard.slice(-1)).removeClass('show');
+          $('#text' + activeCard.slice(-1)).addClass('show');
         }
       );
     }
