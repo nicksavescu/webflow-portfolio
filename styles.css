@@ -29,7 +29,7 @@
 .card-text-active,
 .card-text-inactive {
   position: absolute;
-  width: 40%;
+  width: 100%;
   opacity: 0;
   pointer-events: none;
 }
