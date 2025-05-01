@@ -1,0 +1,34 @@
+
+/*Frosty Nav*/
+.nav-frosty {
+   background: rgba(35, 35, 35, 0.2); /* #232323 with 20% opacity */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Smooth drop shadow */
+  }
+
+/*Rotating Words Headline*/
+ .rotate-words {
+  display: inline-block;
+  min-width: 6.5ch; /* Adjust based on your longest word */
+  white-space: nowrap;
+}
+
+/*Hover Cards*/
+#card1, #card2, #card3, #card4 {
+    position: relative;
+    transition: flex-grow 1s ease-in-out, width 1s ease-in-out;
+    overflow: hidden;
+}
+#card1, #card2, #card3, #card4 {
+    transition: width 0.5s ease-in-out;
+}
+.Card-text-active, .Inner-wrapper-hc {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    display: none;
+}
+.Card-text-active.show, .Inner-wrapper-hc.show {
+    opacity: 1;
+    display: block;
+}
