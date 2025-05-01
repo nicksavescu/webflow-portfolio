@@ -1,7 +1,7 @@
 //Navbar Show/Hide
 $(document).ready(function () {
     let lastScrollTop = 0;
-    const $navbar = $('.nav-frosty');
+    const $navbar = $('.navbar'); // Replace '.navbar' with your actual navbar selector
     const frostyClass = 'nav-frosty';
     const hiddenClass = 'nav-hidden';
 
@@ -10,16 +10,16 @@ $(document).ready(function () {
 
       // Add or remove frosty look
       if (scrollTop > 50) {
-        $navbar.addClass(nav-frosty);
+        $navbar.addClass(frostyClass);
       } else {
-        $navbar.removeClass(nav-frosty);
+        $navbar.removeClass(frostyClass);
       }
 
       // Hide on scroll down, show on scroll up
       if (scrollTop > lastScrollTop && scrollTop > 100) {
-        $navbar.addClass(nav-hidden);
+        $navbar.addClass(hiddenClass);
       } else {
-        $navbar.removeClass(nav-hidden);
+        $navbar.removeClass(hiddenClass);
       }
 
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
