@@ -67,48 +67,43 @@ $(document).ready(function () {
 
 //Cards Hover
 $(document).ready(function () {
-  function initializeCardHover() {
-    if ($(window).width() >= 1000) {
-      const $cards = $('.hover-card');
+  const $cards = $('.hover-card');
+  let activeIndex = 0;
 
-      // Set initial active card
-      let activeIndex = 0;
-
-      function resetCards() {
-        $cards.css('width', '20%');
-        $cards.each(function () {
-          $(this).find('.card-text-inactive').show();
-          $(this).find('.card-text-active').hide();
-        });
-      }
-
-      // Set initial state
-      resetCards();
-      $cards.eq(activeIndex).css('width', '40%');
-      $cards.eq(activeIndex).find('.card-text-inactive').hide();
-      $cards.eq(activeIndex).find('.card-text-active').show();
-
-      $cards.hover(
-        function () {
-          const index = $cards.index(this);
-          resetCards();
-          $(this).css('width', '40%');
-          $(this).find('.card-text-inactive').hide();
-          $(this).find('.card-text-active').show();
-          activeIndex = index;
-        },
-        function () {
-          resetCards();
-          $cards.eq(activeIndex).css('width', '40%');
-          $cards.eq(activeIndex).find('.card-text-inactive').hide();
-          $cards.eq(activeIndex).find('.card-text-active').show();
-        }
-      );
-    }
+  function resetCards() {
+    $cards.each(function (index) {
+      const $card = $(this);
+      gsap.to($card, { width: "20%", duration: 0.5, ease: "power2.out" });
+      gsap.to($card.find('.card-text-active'), { opacity: 0, duration: 0.3 });
+      gsap.to($card.find('.card-text-inactive'), { opacity: 1, duration: 0.3 });
+    });
   }
 
-  initializeCardHover();
-  $(window).resize(function () {
-    initializeCardHover();
-  });
+  // Initial state
+  const $initialCard = $cards.eq(activeIndex);
+  gsap.set($initialCard, { width: "40%" });
+  gsap.set($initialCard.find('.card-text-active'), { opacity: 1 });
+  gsap.set($initialCard.find('.card-text-inactive'), { opacity: 0 });
+
+  $cards.hover(
+    function () {
+      const index = $cards.index(this);
+      resetCards();
+
+      const $hovered = $(this);
+      gsap.to($hovered, { width: "40%", duration: 0.5, ease: "power2.out" });
+      gsap.to($hovered.find('.card-text-active'), { opacity: 1, duration: 0.3 });
+      gsap.to($hovered.find('.card-text-inactive'), { opacity: 0, duration: 0.3 });
+
+      activeIndex = index;
+    },
+    function () {
+      resetCards();
+
+      const $activeCard = $cards.eq(activeIndex);
+      gsap.to($activeCard, { width: "40%", duration: 0.5, ease: "power2.out" });
+      gsap.to($activeCard.find('.card-text-active'), { opacity: 1, duration: 0.3 });
+      gsap.to($activeCard.find('.card-text-inactive'), { opacity: 0, duration: 0.3 });
+    }
+  );
 });
