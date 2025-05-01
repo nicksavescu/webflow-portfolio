@@ -20,20 +20,16 @@
 }
 
 /*Hover Cards*/
-#card1, #card2, #card3, #card4 {
+.hover-card {
     position: relative;
-    transition: flex-grow 1s ease-in-out, width 1s ease-in-out;
-    overflow: hidden;
-}
-#card1, #card2, #card3, #card4 {
     transition: width 0.5s ease-in-out;
+    overflow: hidden;
+    width: 20%; /* Default width, will be overridden on hover */
 }
-.Card-text-active, .Inner-wrapper-hc {
+
+.card-text-active,
+.card-text-inactive {
     transition: opacity 0.5s ease-in-out;
     opacity: 0;
     display: none;
-}
-.Card-text-active.show, .Inner-wrapper-hc.show {
-    opacity: 1;
-    display: block;
 }
