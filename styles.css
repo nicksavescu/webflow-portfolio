@@ -21,15 +21,15 @@
 
 /*Hover Cards*/
 .hover-card {
-    position: relative;
-    transition: width 0.5s ease-in-out;
-    overflow: hidden;
-    width: 20%; /* Default width, will be overridden on hover */
+  width: 20%;
+  overflow: hidden;
+  position: relative;
 }
 
 .card-text-active,
 .card-text-inactive {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0;
-    display: none;
+  position: absolute;
+  width: 40%;
+  opacity: 0;
+  pointer-events: none;
 }
