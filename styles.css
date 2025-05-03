@@ -46,6 +46,7 @@
    z-index: -1;
    padding: 3px;
    border-radius: 8px;
+   animation: 3s spin linear infinite;
    {
 
 .hover-card::before{
