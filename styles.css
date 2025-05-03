@@ -34,7 +34,7 @@
   pointer-events: none;
 }
 
-.hover-card:: after, .hover-card::before{
+.card-gradient:: after, .card-gradient::before{
    content: '';
    position: absolute;
    height: 100%;
@@ -49,7 +49,7 @@
    animation: 3s spin linear infinite;
    {
 
-.hover-card::before{
+.card-gradient::before{
   filter: blur(1.5rem);
   opacity: 0.5;
 }
