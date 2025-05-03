@@ -73,7 +73,7 @@ $(document).ready(function () {
   function resetCards() {
     $cards.each(function (index) {
       const $card = $(this);
-      gsap.to($card, { width: "20%", duration: 0.5, ease: "power2.out" });
+      gsap.to($card, { width: "30%", duration: 0.5, ease: "power2.out" });
       gsap.to($card.find('.card-text-active'), { opacity: 0, duration: 0.3 });
       gsap.to($card.find('.card-text-inactive'), { opacity: 1, duration: 0.3 });
     });
@@ -81,7 +81,7 @@ $(document).ready(function () {
 
   // Initial state
   const $initialCard = $cards.eq(activeIndex);
-  gsap.set($initialCard, { width: "40%" });
+  gsap.set($initialCard, { width: "50%" });
   gsap.set($initialCard.find('.card-text-active'), { opacity: 1 });
   gsap.set($initialCard.find('.card-text-inactive'), { opacity: 0 });
 
@@ -91,7 +91,7 @@ $(document).ready(function () {
       resetCards();
 
       const $hovered = $(this);
-      gsap.to($hovered, { width: "40%", duration: 0.5, ease: "power2.out" });
+      gsap.to($hovered, { width: "50%", duration: 0.5, ease: "power2.out" });
       gsap.to($hovered.find('.card-text-active'), { opacity: 1, duration: 0.3 });
       gsap.to($hovered.find('.card-text-inactive'), { opacity: 0, duration: 0.3 });
 
@@ -101,7 +101,7 @@ $(document).ready(function () {
       resetCards();
 
       const $activeCard = $cards.eq(activeIndex);
-      gsap.to($activeCard, { width: "40%", duration: 0.5, ease: "power2.out" });
+      gsap.to($activeCard, { width: "50%", duration: 0.5, ease: "power2.out" });
       gsap.to($activeCard.find('.card-text-active'), { opacity: 1, duration: 0.3 });
       gsap.to($activeCard.find('.card-text-inactive'), { opacity: 0, duration: 0.3 });
     }
