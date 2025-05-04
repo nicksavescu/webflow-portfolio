@@ -36,7 +36,7 @@
   pointer-events: none;
 }
 
-.card-gradient:: after, .card-gradient::before{
+.card-gradient::after, .card-gradient::before{
    content: '';
    position: absolute;
    height: 100%;
@@ -49,7 +49,7 @@
    padding: 3px;
    border-radius: 8px;
    animation: 3s spin linear infinite;
-   {
+}
 
 .card-gradient::before{
   filter: blur(1.5rem);
