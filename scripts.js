@@ -1,31 +1,3 @@
-//Navbar Show/Hide
-$(document).ready(function () {
-  let lastScrollTop = 0;
-  const $navbar = $(".navbar"); // Replace '.navbar' with your actual navbar selector
-  const frostyClass = "nav-frosty";
-  const hiddenClass = "nav-hidden";
-
-  $(window).on("scroll", function () {
-    const scrollTop = $(this).scrollTop();
-
-    // Add or remove frosty look
-    if (scrollTop > 50) {
-      $navbar.addClass(frostyClass);
-    } else {
-      $navbar.removeClass(frostyClass);
-    }
-
-    // Hide on scroll down, show on scroll up
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-      $navbar.addClass(hiddenClass);
-    } else {
-      $navbar.removeClass(hiddenClass);
-    }
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
-});
-
 //Rotating Words Headline
 $(document).ready(function () {
   $(".rotate-words").each(function () {
