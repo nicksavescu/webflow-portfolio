@@ -1,19 +1,4 @@
 
-/*Frosty Nav*/
-.nav-frosty {
-   background: rgba(35, 35, 35, 0.2); /* #232323 with 20% opacity */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Smooth drop shadow */
-  }
-/*Nav Hide*/
-.nav-hidden {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
 /*Rotating Words Headline*/
  .rotate-words {
   display: inline-block;
