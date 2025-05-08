@@ -1,7 +1,7 @@
 //Rotating Words Headline
 $(document).ready(function () {
-  $(".rotate-words").each(function () {
-    const words = $(this).data("rotate-words").split(",");
+  $(".dynamic-words").each(function () {
+    const words = $(this).data("dynamic-words").split(",");
     let index = 0;
     const $el = $(this);
     let currentText = "";

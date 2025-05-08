@@ -1,6 +1,6 @@
 
 /*Rotating Words Headline*/
- .rotate-words {
+ .dynamic-words {
   display: inline-block;
   min-width: 6.5ch; /* Adjust based on your longest word */
   white-space: nowrap;
