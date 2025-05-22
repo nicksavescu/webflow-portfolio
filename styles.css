@@ -14,4 +14,5 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* Safari support */
   box-shadow: 0 8px 8px -6px rgba(0, 0, 0, 0.2); /* Optional for depth */
+  margin-top: 1rem;
 }
