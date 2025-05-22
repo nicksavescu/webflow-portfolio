@@ -5,3 +5,16 @@
   min-width: 6.5ch; /* Adjust based on your longest word */
   white-space: nowrap;
 }
+
+/*Navbar*/
+.nav-frosty {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Class added when scrolling */
+.is-frosty {
+  background-color: rgba(255, 255, 255, 0.6); /* Adjust opacity/color as needed */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional for depth */
+}

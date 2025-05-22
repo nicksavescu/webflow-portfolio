@@ -36,3 +36,15 @@ $(document).ready(function () {
   });
 });
 
+//Navbar
+window.addEventListener('scroll', () => {
+  const navFrosty = document.querySelector('.nav-frosty');
+  if (!navFrosty) return;
+
+  if (window.scrollY > 80) {
+    navFrosty.classList.add('is-frosty');
+  } else {
+    navFrosty.classList.remove('is-frosty');
+  }
+});
+
