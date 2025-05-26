@@ -49,14 +49,14 @@ window.addEventListener('scroll', () => {
 });
 
 //Dark Mode
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.querySelector(".dark-mode");
+  const lottie = toggleButton.querySelector(".light-toggle");
   let isDarkMode = true;
 
-  // Reference to Webflow CSS variables
   const variables = document.documentElement.style;
 
-  // Define both theme values
   const themes = {
     dark: {
       "--background": "#232323",
@@ -74,7 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Apply theme variables
+  const moonFrame = 92.4;
+  const sunFrame = 0;
+
   function applyTheme(themeName) {
     const theme = themes[themeName];
     for (let key in theme) {
@@ -82,20 +84,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Set initial dark mode
-  applyTheme("dark");
+  function waitForLottieReady(callback) {
+    if (lottie && lottie.goToAndStop) {
+      callback();
+    } else {
+      const interval = setInterval(() => {
+        if (lottie && lottie.goToAndStop) {
+          clearInterval(interval);
+          callback();
+        }
+      }, 100);
+    }
+  }
 
-  // Toggle logic
+  // Set initial dark mode and position Lottie at moonFrame
+  applyTheme("dark");
+  waitForLottieReady(() => {
+    lottie.goToAndStop(moonFrame, true);
+  });
+
   toggleButton.addEventListener("click", () => {
     isDarkMode = !isDarkMode;
     const themeToApply = isDarkMode ? "dark" : "light";
     applyTheme(themeToApply);
 
-    // Optional: Play Lottie animation forwards/backwards
-    const lottie = toggleButton.querySelector(".light-toggle");
-    if (lottie && lottie.play) {
-      isDarkMode ? lottie.setDirection(-1) : lottie.setDirection(1);
-      lottie.play();
+    if (lottie && lottie.playSegments) {
+      if (isDarkMode) {
+        // Going from light → dark (Sun → Moon)
+        lottie.playSegments([sunFrame, moonFrame], true);
+      } else {
+        // Going from dark → light (Moon → Sun)
+        lottie.playSegments([moonFrame, sunFrame], true);
+      }
     }
   });
 });
+</script>
