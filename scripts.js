@@ -48,3 +48,54 @@ window.addEventListener('scroll', () => {
   }
 });
 
+//Dark Mode
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.querySelector(".dark-mode");
+  let isDarkMode = true;
+
+  // Reference to Webflow CSS variables
+  const variables = document.documentElement.style;
+
+  // Define both theme values
+  const themes = {
+    dark: {
+      "--background": "#232323",
+      "--text": "#f6f6f6",
+      "--button-color": "#ef5225",
+      "--highlight-color-orange": "#ef5225",
+      "--highlight-color-purple": "#5c35c0",
+    },
+    light: {
+      "--background": "#f6f6f6",
+      "--text": "#363939",
+      "--button-color": "#ef5225",
+      "--highlight-color-orange": "#ef5225",
+      "--highlight-color-purple": "#5c35c0",
+    }
+  };
+
+  // Apply theme variables
+  function applyTheme(themeName) {
+    const theme = themes[themeName];
+    for (let key in theme) {
+      variables.setProperty(key, theme[key]);
+    }
+  }
+
+  // Set initial dark mode
+  applyTheme("dark");
+
+  // Toggle logic
+  toggleButton.addEventListener("click", () => {
+    isDarkMode = !isDarkMode;
+    const themeToApply = isDarkMode ? "dark" : "light";
+    applyTheme(themeToApply);
+
+    // Optional: Play Lottie animation forwards/backwards
+    const lottie = toggleButton.querySelector(".light-toggle");
+    if (lottie && lottie.play) {
+      isDarkMode ? lottie.setDirection(-1) : lottie.setDirection(1);
+      lottie.play();
+    }
+  });
+});
