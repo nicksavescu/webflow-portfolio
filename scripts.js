@@ -49,10 +49,9 @@ window.addEventListener('scroll', () => {
 });
 
 //Dark Mode
-<script>
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.querySelector(".dark-mode");
-  const lottie = toggleButton.querySelector(".light-toggle");
+  const lottie = document.querySelector("lottie-player");
   let isDarkMode = true;
 
   const variables = document.documentElement.style;
@@ -84,23 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function waitForLottieReady(callback) {
-    if (lottie && lottie.goToAndStop) {
-      callback();
-    } else {
-      const interval = setInterval(() => {
-        if (lottie && lottie.goToAndStop) {
-          clearInterval(interval);
-          callback();
-        }
-      }, 100);
-    }
-  }
-
-  // Set initial dark mode and position Lottie at moonFrame
-  applyTheme("dark");
-  waitForLottieReady(() => {
-    lottie.goToAndStop(moonFrame, true);
+  // Set initial theme and Lottie frame
+  lottie.addEventListener("load", () => {
+    applyTheme("dark");
+    lottie.seek(moonFrame);
   });
 
   toggleButton.addEventListener("click", () => {
@@ -108,15 +94,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeToApply = isDarkMode ? "dark" : "light";
     applyTheme(themeToApply);
 
-    if (lottie && lottie.playSegments) {
-      if (isDarkMode) {
-        // Going from light → dark (Sun → Moon)
-        lottie.playSegments([sunFrame, moonFrame], true);
-      } else {
-        // Going from dark → light (Moon → Sun)
-        lottie.playSegments([moonFrame, sunFrame], true);
-      }
+    if (isDarkMode) {
+      lottie.playSegments([sunFrame, moonFrame], true);
+    } else {
+      lottie.playSegments([moonFrame, sunFrame], true);
     }
   });
 });
-</script>
