@@ -50,8 +50,7 @@ window.addEventListener('scroll', () => {
 
 //Dark Mode
 document.addEventListener("DOMContentLoaded", function () {
-  const toggleButton = document.querySelector(".dark-mode");
-  const lottie = document.querySelector("lottie-player");
+  const container = document.querySelector(".light-toggle");
   let isDarkMode = true;
 
   const variables = document.documentElement.style;
@@ -73,31 +72,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  const animation = lottie.loadAnimation({
+    container: container,
+    renderer: "svg",
+    loop: false,
+    autoplay: false,
+    path: "https://cdn.prod.website-files.com/635ab53d24c1b82b1dbf8144/681269722f65611b218ff41e_dark-toggle.json"
+  });
+
   const moonFrame = 92.4;
   const sunFrame = 0;
 
-  function applyTheme(themeName) {
-    const theme = themes[themeName];
-    for (let key in theme) {
-      variables.setProperty(key, theme[key]);
-    }
-  }
-
-  // Set initial theme and Lottie frame
-  lottie.addEventListener("load", () => {
-    applyTheme("dark");
-    lottie.seek(moonFrame);
+  animation.addEventListener("DOMLoaded", function () {
+    animation.goToAndStop(moonFrame, true);
   });
 
-  toggleButton.addEventListener("click", () => {
+  container.addEventListener("click", function () {
     isDarkMode = !isDarkMode;
     const themeToApply = isDarkMode ? "dark" : "light";
-    applyTheme(themeToApply);
+    const segment = isDarkMode ? [sunFrame, moonFrame] : [moonFrame, sunFrame];
+    animation.playSegments(segment, true);
 
-    if (isDarkMode) {
-      lottie.playSegments([sunFrame, moonFrame], true);
-    } else {
-      lottie.playSegments([moonFrame, sunFrame], true);
+    const theme = themes[themeToApply];
+    for (let key in theme) {
+      variables.setProperty(key, theme[key]);
     }
   });
 });
