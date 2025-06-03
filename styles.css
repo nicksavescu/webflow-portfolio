@@ -18,50 +18,41 @@
 }
 
 /*Animated Border Gradient*/
-.hover-card::after, .hover-card::before{
-  --angle: 0deg;
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-image: conic-gradient (from var(--angle), #EF5225, #5C35C0, #EF5225);
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: -1;
-  padding: 3px;
-  border-radius: 8px;
-  animation: 3s spin linear infinite;
-}
-
-.hover-card::before{
-  filter: blur(0.5rem);
-  opacity: 0.5;
-  z-index: -2;
-  animation: blur-effect 3.5s linear infinite glowing-border 3.5s linear infinite;
-
-}
-
 @property --angle {
   syntax: "<angle>";
-  initial-value: 53deg;
+  initial-value: 0deg;
   inherits: false;
 }
-@keyframes spin{
-  from{
-    --angle: 53deg;
-  }
-  to{
-    --angle: 413deg;
-  }
+
+.hover-card {
+  position: relative;
+  z-index: 0;
+  border-radius: 8px;
+  overflow: visible;
 }
 
-@keyframes blur-effect{
-  from{
-    filter: blur(8px);
+.hover-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 10px;
+  padding: 2px;
+  translate: 0% 0%;
+  background: conic-gradient(from var(--angle), #EF5225, #5C35C0, #EF5225);
+  animation: spin 3s linear infinite;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0); 
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
 
-  }
-  to{
-    filter: blur(7px);
-  }
+/* Rotation animation */
+@keyframes spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
 }
