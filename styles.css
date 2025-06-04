@@ -37,7 +37,7 @@
   inset: -2px;
   z-index: -1;
   border-radius: 10px;
-  padding: 2px;
+  padding: 3px;
   translate: 0% 0%;
   background: conic-gradient(from var(--angle), #EF5225, #5C35C0, #EF5225);
   animation: spin 3s linear infinite;
