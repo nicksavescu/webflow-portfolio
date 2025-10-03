@@ -56,3 +56,53 @@
   from { --angle: 0deg; }
   to { --angle: 360deg; }
 }
+
+
+:root {
+  --card-tab-height: 70px;
+}
+
+.card-tab {
+  width: 350px;
+  height: var(--card-tab-height);
+  background: green;
+  background-image: url("https://cdn.prod.website-files.com/635ab53d24c1b82b1dbf8144/681686272b10b43b94d8e7b5_maze-70.webp");
+}
+
+.card-tab.left {
+  clip-path: url(#tab-left);
+}
+
+.card-tab.middle {
+  clip-path: url(#tab-middle);
+  margin-left: 100px;
+  background-position-x: -100px;
+}
+
+.card-tab.right {
+  clip-path: url(#tab-middle);
+  margin-left: 250px;
+  background-position-x: -250px;
+}
+
+.card-body {
+  width: 600px;
+  height: 400px;
+  background: green;
+  background-image: url("https://cdn.prod.website-files.com/635ab53d24c1b82b1dbf8144/681686272b10b43b94d8e7b5_maze-70.webp");
+  background-position-y: calc(0px - var(--card-tab-height));
+}
+
+.cards-container {
+  display: flex;
+  gap: 5px;
+}
+
+.card-tab-cnt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-tab-btn {
+  
+}
