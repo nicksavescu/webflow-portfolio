@@ -24,14 +24,14 @@
   inherits: false;
 }
 
-.hover-card {
+.animated-border {
   position: relative;
   z-index: 0;
   border-radius: 8px;
   overflow: visible;
 }
 
-.hover-card::after {
+.animated-border::after {
   content: '';
   position: absolute;
   inset: -2px;
