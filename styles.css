@@ -56,9 +56,3 @@
   from { --angle: 0deg; }
   to { --angle: 360deg; }
 }
-
-/* Applies to a list with the class "my-list" */
-.my-list li::marker {
-  color: #323232; /* Change the bullet color */
-  stroke: linear-gradient(45deg, #EF5225, #5C35C0);
-}
