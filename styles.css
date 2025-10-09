@@ -56,3 +56,9 @@
   from { --angle: 0deg; }
   to { --angle: 360deg; }
 }
+
+
+/* Nav link Current Color*/
+.w-nav-link.w--current {
+  color: #EF5225; /* or your desired color */
+}
