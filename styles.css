@@ -59,7 +59,7 @@
 
 
 /*Dropdown styling*/
-w-select {
+select {
 	appearance: none;
   background-image: url("https://cdn.prod.website-files.com/635ab53d24c1b82b1dbf8144/68ee83814a8a6e4bbd7b0a67_chevron-down.svg");
   background-repeat: no-repeat;
