@@ -66,3 +66,26 @@
   background-position: right 0.7rem top 50%;
   background-size: 1rem auto;
 }
+
+
+/*Slider styling*/
+.w-slider-dot.w-active {
+	background: #EF5225 !important
+}
+
+.w-slider-dot {
+    background: #2226 !important;
+    width: 0.75rem;
+    height: 0.75rem;
+}
+.w-slider-mask {
+    display: flex !important;
+}
+.w-slide {
+    flex-shrink: 0;
+    height: auto !important;
+    display: flex;
+}
+.w-slide .testimonial-card {
+    height: 100%;
+}
