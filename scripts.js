@@ -53,15 +53,23 @@ window.addEventListener('scroll', () => {
     const wrapper = document.querySelector('.light-area-wrapper');
     const blob = document.querySelector('.light-blob');
 
-    if (!wrapper || !blob) return;
+    if (!wrapper || !blob) {
+      console.warn('Blob script: wrapper or blob not found');
+      return;
+    }
+
+    // Make sure blob is visible & free to move
+    blob.style.position = 'absolute';
+    blob.style.pointerEvents = 'none';
 
     wrapper.addEventListener('mousemove', function (e) {
       const rect = wrapper.getBoundingClientRect();
 
-      // Mouse position relative to wrapper
+      // Mouse position relative to the wrapper
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
       blob.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
     });
+  });
   });
