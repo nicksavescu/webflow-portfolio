@@ -49,7 +49,7 @@ window.addEventListener('scroll', () => {
 });
 
 //Light Follows Mouse
-document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const wrapper = document.querySelector('.light-area-wrapper');
     const blob = document.querySelector('.light-blob');
     if (!wrapper || !blob) return;
@@ -57,13 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('mousemove', function (e) {
       const rect = wrapper.getBoundingClientRect();
 
-      // Mouse position relative to the wrapper
       let x = e.clientX;
       let y = e.clientY - rect.top;
 
-      // Clamp Y so it stays inside the wrapper vertically
-      y = Math.max(0, Math.min(rect.height, y));
-
-      blob.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      blob.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
     });
   });
+
