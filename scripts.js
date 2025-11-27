@@ -52,15 +52,16 @@ window.addEventListener('scroll', () => {
   document.addEventListener('DOMContentLoaded', function () {
     const wrapper = document.querySelector('.light-area-wrapper');
     const blob = document.querySelector('.light-blob');
+
     if (!wrapper || !blob) return;
 
-    document.addEventListener('mousemove', function (e) {
+    wrapper.addEventListener('mousemove', function (e) {
       const rect = wrapper.getBoundingClientRect();
 
-      let x = e.clientX;
-      let y = e.clientY - rect.top;
+      // Mouse position relative to wrapper
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
       blob.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
     });
   });
-
