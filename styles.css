@@ -119,3 +119,22 @@
 .w-slide .testimonial-card {
     height: 100%;
 }
+
+/* Base styles for the leaf template + clones */
+.leaf,
+.leaf-template {
+  position: absolute;
+  pointer-events: none;
+  transform-origin: center;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Color variants – JS will assign these so neighbors alternate */
+.leaf--peach svg * {
+  fill: #F6A48D !important;
+}
+
+.leaf--purple svg * {
+  fill: #8D6FD8 !important;
+}
