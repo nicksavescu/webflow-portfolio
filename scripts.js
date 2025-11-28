@@ -50,6 +50,14 @@ window.addEventListener('scroll', () => {
 
 //Leafs & Light
 document.addEventListener('DOMContentLoaded', function () {
+  
+  // ❌ STOP for tablet/mobile
+  if (window.innerWidth <= 991) {
+    const template = document.querySelector('.leaf-template');
+    if (template) template.style.display = 'none';
+    return; 
+  }
+  
   const wrapper = document.querySelector('.light-area'); // now using .light-area
   const blob = wrapper ? wrapper.querySelector('.light-blob') : null;
   const template = wrapper ? wrapper.querySelector('.leaf-template') : null;
